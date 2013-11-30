@@ -84,26 +84,26 @@
 
     public function createNewGoalViaAjax() {
       # Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
-      $_REQUEST = DB::instance(DB_NAME)->sanitize($_REQUEST);        
+      $_POST = DB::instance(DB_NAME)->sanitize($_POST);        
 
-      $start_date =$_REQUEST['start_date'];      
+      $start_date =$_POST['start_date'];      
 
-      $goal_days =$_REQUEST['goal_days'];
-      $start_value =$_REQUEST['start_value'];
-      $target_value =$_REQUEST['target_value'];
+      $goal_days =$_POST['goal_days'];
+      $start_value =$_POST['start_value'];
+      $target_value =$_POST['target_value'];
       
-      $_REQUEST['created']  = Time::now();
-      $_REQUEST['modified'] = Time::now();
-      $_REQUEST['active_flag'] = 'Y';      
-      $_REQUEST['user_id']  = $this->user->user_id;
+      $_POST['created']  = Time::now();
+      $_POST['modified'] = Time::now();
+      $_POST['active_flag'] = 'Y';      
+      $_POST['user_id']  = $this->user->user_id;
       
       // validate the data
       // upate previous goals to inactive
-      $inactiveUpdate = "update goals set active_flag = 'N' where user_id =".$_REQUEST['user_id'];
+      $inactiveUpdate = "update goals set active_flag = 'N' where user_id =".$_POST['user_id'];
       DB::instance(DB_NAME)->query($inactiveUpdate); 
 
       // save current goal
-      $goal_Id = DB::instance(DB_NAME)->insert('goals',$_REQUEST); 
+      $goal_Id = DB::instance(DB_NAME)->insert('goals',$_POST); 
 
       // update the start date to the date format
       $updateStartDate = "update goals set start_date = str_to_date('".$start_date."','%Y-%m-%d') where goal_id = ".$goal_Id;
@@ -176,12 +176,12 @@
 
     public function saveNewProgressViaAjax() {
         # Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
-        $_REQUEST = DB::instance(DB_NAME)->sanitize($_REQUEST); 
+        $_POST = DB::instance(DB_NAME)->sanitize($_POST); 
 
-        $_REQUEST['created']  = Time::now();
-        $_REQUEST['modified'] = Time::now();
+        $_POST['created']  = Time::now();
+        $_POST['modified'] = Time::now();
 
-        $progress_Id = DB::instance(DB_NAME)->insert('progress',$_REQUEST);       
+        $progress_Id = DB::instance(DB_NAME)->insert('progress',$_POST);       
   
         echo "S: Save new progressSuccessfully".$progress_Id;    
    } 

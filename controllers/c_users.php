@@ -40,13 +40,13 @@
 
    public function signInViaAjax() {
       # Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
-      $_REQUEST = DB::instance(DB_NAME)->sanitize($_REQUEST);
+      $_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
       # Hash submitted password so we can compare it against one in the db
-      $_REQUEST['password'] = sha1(PASSWORD_SALT.$_REQUEST['password']);
+      $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
 
-      $email =$_REQUEST['email'];
-      $password = $_REQUEST['password'];
+      $email =$_POST['email'];
+      $password = $_POST['password'];
 
       if (strlen($email) ==0) {
           echo 'E:email requried for sign in';
@@ -123,11 +123,11 @@
 
    public function signUpViaAjax(){
        # sanitize the parameters
-      $_REQUEST = DB::instance(DB_NAME)->sanitize($_REQUEST);
+      $_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
       # get the email address 
-      $email = DB::instance(DB_NAME)->sanitize($_REQUEST['email']);      
-      $password = DB::instance(DB_NAME)->sanitize($_REQUEST['password']);      
+      $email = DB::instance(DB_NAME)->sanitize($_POST['email']);      
+      $password = DB::instance(DB_NAME)->sanitize($_POST['password']);      
       if (strlen($email) ==0) {
           echo 'E:email empty';
       } else if(strlen($password)==0) {
@@ -139,22 +139,22 @@
        if ($email_count !=0) {
           echo 'E:email is already taken by this site';
        } else {
-        $_REQUEST['created']  = Time::now();
-        $_REQUEST['modified'] = Time::now();
-        $_REQUEST['signup_ip_address'] = $_SERVER['REMOTE_ADDR'];
-        $_REQUEST['signup_machine_name'] = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-        $_REQUEST['last_login_ip_address'] = $_SERVER['REMOTE_ADDR'];
-        $_REQUEST['last_login_machine_name'] = gethostbyaddr($_SERVER['REMOTE_ADDR']);         
+        $_POST['created']  = Time::now();
+        $_POST['modified'] = Time::now();
+        $_POST['signup_ip_address'] = $_SERVER['REMOTE_ADDR'];
+        $_POST['signup_machine_name'] = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+        $_POST['last_login_ip_address'] = $_SERVER['REMOTE_ADDR'];
+        $_POST['last_login_machine_name'] = gethostbyaddr($_SERVER['REMOTE_ADDR']);         
 
         # Encrypt the password  
-        $_REQUEST['password'] = sha1(PASSWORD_SALT.$_REQUEST['password']);      
+        $_POST['password'] = sha1(PASSWORD_SALT.$_REQUEST['password']);      
         # Create an encrypted token via their email address and a random string
-        $_REQUEST['token'] = sha1(TOKEN_SALT.$_REQUEST['email'].Utils::generate_random_string());
-        $user_Id = DB::instance(DB_NAME)->insert('users',$_REQUEST);     
+        $_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
+        $user_Id = DB::instance(DB_NAME)->insert('users',$_POST);     
 
         # send a welcome email
         //$this->send_welcome_email($_POST['email'],$_POST['first_name'],$_POST['last_name']);              
-        setcookie("token", $_REQUEST['token'] , strtotime('+1 year'), '/');
+        setcookie("token", $_POST['token'] , strtotime('+1 year'), '/');
         echo 'S:userId:'.$user_Id;  
       }
     }
