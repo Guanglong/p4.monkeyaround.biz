@@ -1,0 +1,41 @@
+2013-11-01 21:44:51 - INFO --> -------------------------- 
+2013-11-01 21:44:51 - INFO --> Controller/Method: users/p_signup 
+2013-11-01 21:44:51 - INFO --> From: Monkey Blog (webmaster@monkeyaround.com) 
+2013-11-01 21:44:51 - INFO --> To:   (),  
+2013-11-01 21:44:51 - INFO --> CC: G (G), g (g),  
+2013-11-01 21:44:51 - INFO --> BCC: G (G), g (g),  
+2013-11-01 21:44:51 - INFO --> Subject: Welcome to Monkey BlogDev 
+2013-11-01 21:44:51 - INFO --> Body: Hi , Welcome to Monkey blog. This is a message to confirm your registration with Monkey Blog. No actions are required and your account has been activated! Please do not reply to this email, as this email address is not actively being monitored. 
+2013-11-01 21:44:51 - INFO --> FAILED TO SEND EMAIL 
+2013-11-01 21:58:47 - INFO --> -------------------------- 
+2013-11-01 21:58:47 - INFO --> Controller/Method: users/p_signup 
+2013-11-01 21:58:47 - INFO --> From: Monkey Blog (webmaster@monkeyaround.com) 
+2013-11-01 21:58:47 - INFO --> To: gwong Long (boomaozi@gmail.com),  
+2013-11-01 21:58:47 - INFO --> CC: G (G), g (g),  
+2013-11-01 21:58:47 - INFO --> BCC: G (G), g (g),  
+2013-11-01 21:58:47 - INFO --> Subject: Welcome to Monkey BlogDev 
+2013-11-01 21:58:47 - INFO --> Body: Hi gwong, Welcome to Monkey blog. This is a message to confirm your registration with Monkey Blog. No actions are required and your account has been activated! Please do not reply to this email, as this email address is not actively being monitored. 
+2013-11-01 22:00:45 - INFO --> -------------------------- 
+2013-11-01 22:00:45 - INFO --> Controller/Method: users/p_reset_password 
+2013-11-01 22:00:45 - INFO --> From: Monkey Blog (webmaster@monkeyaround.com) 
+2013-11-01 22:00:45 - INFO --> To: gwong Long (boomaozi@gmail.com),  
+2013-11-01 22:00:45 - INFO --> CC:  
+2013-11-01 22:00:45 - INFO --> BCC:  
+2013-11-01 22:00:45 - INFO --> Subject: Password Reset Monkey Blog - Dev 
+2013-11-01 22:00:45 - INFO --> Body: Hi gwong. This is to confirm that you requested to reset your password for Monkey Blog. Your action is required! Copy and paste the link in a browser to complete the password reset: http://localhost/users/confirm_password_reset/boomaozi@gmail.com/f536a9663627ee0700b6b94a7185b35f3dfa1650. Please do n 
+2013-11-01 22:00:47 - INFO --> -------------------------- 
+2013-11-01 22:00:47 - INFO --> Controller/Method: users/p_reset_password 
+2013-11-01 22:00:47 - INFO --> From: Monkey Blog (webmaster@monkeyaround.com) 
+2013-11-01 22:00:47 - INFO --> To: gwong Long (gwonglong2013@gmail.com),  
+2013-11-01 22:00:47 - INFO --> CC:  
+2013-11-01 22:00:47 - INFO --> BCC:  
+2013-11-01 22:00:47 - INFO --> Subject: Password Reset Monkey Blog - Dev 
+2013-11-01 22:00:47 - INFO --> Body: Hi gwong. This is to confirm that you requested to reset your password for Monkey Blog. Your action is required! Copy and paste the link in a browser to complete the password reset: http://localhost/users/confirm_password_reset/gwonglong2013@gmail.com/f536a9663627ee0700b6b94a7185b35f3dfa1650. Please 
+2013-11-01 22:02:36 - INFO --> -------------------------- 
+2013-11-01 22:02:36 - INFO --> Controller/Method: users/p_signup 
+2013-11-01 22:02:36 - INFO --> From: Monkey Blog (webmaster@monkeyaround.com) 
+2013-11-01 22:02:36 - INFO --> To: gwong baker (gwonglong@ymail.com),  
+2013-11-01 22:02:36 - INFO --> CC: G (G), g (g),  
+2013-11-01 22:02:36 - INFO --> BCC: G (G), g (g),  
+2013-11-01 22:02:36 - INFO --> Subject: Welcome to Monkey BlogDev 
+2013-11-01 22:02:36 - INFO --> Body: Hi gwong, Welcome to Monkey blog. This is a message to confirm your registration with Monkey Blog. No actions are required and your account has been activated! Please do not reply to this email, as this email address is not actively being monitored. 

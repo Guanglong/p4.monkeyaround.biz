@@ -1,0 +1,84 @@
+.error {
+    color:red;
+}
+
+header {
+   font-size:200%;
+   text-align: center;   
+   /*border-width: 1;  */
+   border: solid; 
+   background: yellow;
+   border-radius: 15px;
+   padding: 20px 15%;  
+ }
+
+.subHeader{
+  font-size:50%; 
+}
+
+section {  
+   /*font-size:30;        */
+   text-align: center; 
+   display: block; 
+   color:white;
+}
+body {
+   background:url(../images/blueSky.jpg) repeat center center fixed; 
+   /*background: rgb(100,200,100); */
+   padding: 40px 25%;  
+   width: 50%;    
+} 
+
+.main {
+   border-width: 1; 
+   /*border: solid;  */
+   text-align: center;
+   background: white ;
+   border-radius: 15px;
+   box-shadow:5px 5px 5px 20px yellow inset;  
+   text-shadow: 5px 3px 1px #bbbaba;
+}
+
+div#mainContent {  
+   display: block;  
+   margin-bottom: 20px;
+   padding: 15px 10px;  
+   text-align: center;      
+}  
+
+article {
+   display: block;   
+   color:red;
+ }   
+footer {
+   text-align: center;    
+   color:black;
+ }
+button {   
+   border-radius: 15px;
+   color:red;
+   font-size: 20px;        
+ }
+
+div {
+   text-align: center;
+}
+
+li {
+  text-align:left; 
+}
+
+table {  
+  position:inherit;
+  text-align: center;
+} 
+ 
+ 
+ #navmenu ul {margin: 0; padding: 0; 
+  list-style-type: none; list-style-image: none; }
+#navmenu li {display: inline; }
+#navmenu ul li a {text-decoration:none;  margin: 4px;
+  padding: 5px 20px 5px 20px; color: blue;
+  background: yellow;}
+#navmenu ul li a:hover {color: purple;
+  background: white; }
