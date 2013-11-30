@@ -1,4 +1,4 @@
-// prepare the dialog to sign user up
+// prepare the dialog to enter new goal
 $("#newGoalDiv").dialog({
   autoOpen: false,
   modal: true,
@@ -21,8 +21,8 @@ $("#newGoalDiv").dialog({
         } 
 });
 
-// when user clicks signUp link on the index page,
-// this function gets called, it prepares the signup form and display a dialog to user 
+// when user clicks link on the goals page,
+// this function gets called, it prepares the form and display a dialog to user 
 function startNewGoalDialog(){ 
   // if no start_date field found, then create start_date field
   if ($('#start_date').length ==0){    
@@ -67,15 +67,15 @@ function startNewGoalDialog(){
   $("#newGoalDiv").dialog("open");   
  }
 
-// sign user up:
-// first do javascript validation, and then do ajax signup
-// upon successfully sign-up, forward to profile page
+// save new goal
+// first do javascript validation, and then do ajax saving
+// upon successfully saving, forward to active page
 function saveNewGoal(){ 
-   if (validateGoalData) { // is data valid, then do save
+  if (validateGoalData()) { // is data valid, then do save     
     createNewGoalViaAjax();    
-  }
-   
+  }   
 }
+
 // return true if date entered are good.
 // otherwise,  return false and display the error
 function validateGoalData(){
@@ -108,6 +108,7 @@ function validateGoalData(){
   } else {
     valid = true; 
   }  
+  
    return valid; 
 }
 
@@ -136,54 +137,55 @@ function isValidDate(value_){
   return valid;
 } 
 
-// create new goal for user  via ajax
+// create new goal for user via ajax
 function createNewGoalViaAjax() {
-    $("#status").html("Please wait...");
-    var urlToSend = "/goals/createNewGoalViaAjax?";
+  $("#status").html("Please wait...");
+  var urlToSend = "/goals/createNewGoalViaAjax?";
 
-    $.ajax({
-        type:"POST",
-        url:urlToSend,
-        data:{
-          start_date: $('#start_date').val(),
-          goal_days: $('#goal_days').val(),
-          start_value:$('#start_value').val(),
-          target_value:$('#target_value').val()
-        },
-        cache: false
-       }).done( function(msg) {
-        createNewGoalDone(msg);
-       }).fail(function(msg) {      
-        createNewGoalFail(msg);
-       });
+  $.ajax({
+      type:"POST",
+      url:urlToSend,
+      data:{
+        start_date: $('#start_date').val(),
+        goal_days: $('#goal_days').val(),
+        start_value:$('#start_value').val(),
+        target_value:$('#target_value').val()
+      },
+      cache: false
+     }).done( function(msg) {
+      createNewGoalDone(msg);
+     }).fail(function(msg) {      
+      createNewGoalFail(msg);
+     });
 }
    
 function createNewGoalFail(msg){
-    alert('Oops, there is a problem while saving the new goal...\n'+msg);
- }
+  alert('Oops, there is a problem while saving the new goal...\n'+msg);
+}
 
 function createNewGoalDone(msg){
-    var status ='E';
-    var statusMessage ='';
-    if ($.trim(msg).length !=0) {
-      status = msg.substr(0,1);
-      if ($.trim(msg).length >=2) {
-        statusMessage = msg.substr(2);
-      }
+  var status ='E';
+  var statusMessage ='';
+  if ($.trim(msg).length !=0) {
+    status = msg.substr(0,1);
+    if ($.trim(msg).length >=2) {
+      statusMessage = msg.substr(2);
     }
+  }
   
-    switch (status) {
-      case 'S':
-          $("#status").html("New goal created succesfully! Please wait for forwarding...");      
-          forwardPageAfterCreateNewGoal(); 
-          break;
-      case 'E':
-      default:        
-          $("#status").html(statusMessage);
-          break;    
-    } 
- }
+  switch (status) {
+    case 'S':
+        $("#status").html("New goal created succesfully! Please wait for forwarding...");      
+        forwardPageAfterCreateNewGoal(); 
+        break;
+    case 'E':
+    default:        
+        $("#status").html(statusMessage);
+        break;    
+  } 
+}
 
- function forwardPageAfterCreateNewGoal(){
-    setTimeout("window.location ='/goals/active'",500);
- }
+// give user a bittle time delay, and then forward to active goal page
+function forwardPageAfterCreateNewGoal(){
+  setTimeout("window.location ='/goals/active'",500);
+}

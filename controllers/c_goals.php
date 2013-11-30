@@ -1,4 +1,5 @@
 <?php
+
     class goals_controller extends base_controller {
 
     public function __construct() {
@@ -8,41 +9,10 @@
         if(!$this->user) {
            die("Members only. <a href='/users/home'>Home</a>");
         }
-    }
+    }  
 
-    public function add($status=NULL) {
-
-        # Setup view
-        $this->template->content = View::instance('v_posts_add');
-        $this->template->title   = "New Post";
-        $this->template->content->status = $status;
-        # Render template
-        echo $this->template;
-
-    }
-
-    public function p_add() {
-
-        # sanitize the parameters
-        $_POST = DB::instance(DB_NAME)->sanitize($_POST);
-        
-        # Associate this post with this user
-        $_POST['user_id']  = $this->user->user_id;
-
-        # Unix timestamp of when this post was created / modified
-        $_POST['created']  = Time::now();
-        $_POST['modified'] = Time::now();
-
-        # Insert
-        # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
-        DB::instance(DB_NAME)->insert('posts', $_POST);
-
-        # Quick and dirty feedback
-        #echo "Your post has been added. <a href='/posts/add'>Add another</a>";
-        # forward to posts/add to render the add page
-        Router::redirect("/posts/add/status");
-      }
-
+    // for goals index page, to get all goals, sort by goal_id
+    // the last one is the active one.
     public function index() {
 
         # Set up the View
@@ -82,35 +52,39 @@
         echo $this->template;
     }
 
+    // to creat a new goal via ajax
+    // it return E: ...  --> error  
+    //           S: ...  --> Successful
     public function createNewGoalViaAjax() {
-      # Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
-      $_POST = DB::instance(DB_NAME)->sanitize($_POST);        
+        # Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
+        $_POST = DB::instance(DB_NAME)->sanitize($_POST);        
 
-      $start_date =$_POST['start_date'];      
+        $start_date =$_POST['start_date'];      
 
-      $goal_days =$_POST['goal_days'];
-      $start_value =$_POST['start_value'];
-      $target_value =$_POST['target_value'];
-      
-      $_POST['created']  = Time::now();
-      $_POST['modified'] = Time::now();
-      $_POST['active_flag'] = 'Y';      
-      $_POST['user_id']  = $this->user->user_id;
-      
-      // validate the data
-      // upate previous goals to inactive
-      $inactiveUpdate = "update goals set active_flag = 'N' where user_id =".$_POST['user_id'];
-      DB::instance(DB_NAME)->query($inactiveUpdate); 
+        $goal_days =$_POST['goal_days'];
+        $start_value =$_POST['start_value'];
+        $target_value =$_POST['target_value'];
+        
+        $_POST['created']  = Time::now();
+        $_POST['modified'] = Time::now();
+        $_POST['active_flag'] = 'Y';      
+        $_POST['user_id']  = $this->user->user_id;
+        
+        // validate the data
+        // upate previous goals to inactive
+        $inactiveUpdate = "update goals set active_flag = 'N' where user_id =".$_POST['user_id'];
+        DB::instance(DB_NAME)->query($inactiveUpdate); 
 
-      // save current goal
-      $goal_Id = DB::instance(DB_NAME)->insert('goals',$_POST); 
+        // save current goal
+        $goal_Id = DB::instance(DB_NAME)->insert('goals',$_POST); 
 
-      // update the start date to the date format
-      $updateStartDate = "update goals set start_date = str_to_date('".$start_date."','%Y-%m-%d') where goal_id = ".$goal_Id;
-      DB::instance(DB_NAME)->query($updateStartDate);   
-      echo 'S:new goal saved successfully!';
+        // update the start date to the date format
+        $updateStartDate = "update goals set start_date = str_to_date('".$start_date."','%Y-%m-%d') where goal_id = ".$goal_Id;
+        DB::instance(DB_NAME)->query($updateStartDate);   
+        echo 'S:new goal saved successfully!';
     } 
 
+    // for displaying the active goal page
     public function active() {
 
         # Set up the View
@@ -174,6 +148,9 @@
         echo $this->template;
     }
 
+    // to creat a new progress via ajax
+    // it return E: ...  --> error  
+    //           S: ...  --> Successful
     public function saveNewProgressViaAjax() {
         # Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
         $_POST = DB::instance(DB_NAME)->sanitize($_POST); 
