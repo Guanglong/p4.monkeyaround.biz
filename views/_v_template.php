@@ -20,8 +20,8 @@
 
 <body>	
    <header>  Weight and See 
-     <div class="subHeader"> a weight monitor program <div>
-   </header> <br/>
+     <div class="subHeader"> a weight monitor program </div>
+   </header> <br>
    
    <div id="navmenu">
     <ul>
