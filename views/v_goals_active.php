@@ -53,7 +53,8 @@
     else { 
         echo '<br>';
         if ($maxProgressDayEntered >=$activeGoal[0]['goal_days']) {
-          echo 'The number of days entered has reached goal limit. No new progress can be made to this goal'; 
+          echo 'The number of days entered has reached goal limit. No new progress can be made to this goal,'.
+          ' but you can start a new goal <a href="/goals">here <a>'; 
         } else {
           echo 'To record your progress, click <a href="javascript:startNewProgressDialog();">here</a>'; 
         }    
