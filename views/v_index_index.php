@@ -1,7 +1,3 @@
-<script type="text/javascript" >
-    <!-- one time script to hide the home button, since it is on the home page already! -->
-   document.getElementById("homeButton").style.display="none";
-</script>
 <section>Welcome to <?=APP_NAME?><?php if($user) echo '.'.$user->first_name."!"; ?></section>
 <div id="signUpDiv" title="Sign Up"></div>
 <div id="signInDiv" title="Sign In"></div>

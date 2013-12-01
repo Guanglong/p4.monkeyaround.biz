@@ -1,3 +1,7 @@
+
+// make the goal menu white
+$('#active_li').css('background','white');
+
 // prepare the dialog to allow user to enter the new progress
 $("#newProgressDiv").dialog({
     autoOpen: false,
@@ -292,7 +296,7 @@ function drawChart() {
     );
 
     var options = {
-      title: 'Progress You Made',
+      title: 'Progress You Made vs. Planned',
       curveType:'none',
       hAxis:{title: 'Days'},
       vAxis:{title:'Weight'}

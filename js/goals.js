@@ -1,3 +1,6 @@
+// make the goals menu white
+$('#goals_li').css('background','white');
+
 // prepare the dialog to enter new goal
 $("#newGoalDiv").dialog({
   autoOpen: false,
@@ -21,13 +24,27 @@ $("#newGoalDiv").dialog({
         } 
 });
 
+function getTodayAsString(){
+  var today = new Date();
+  var mm = ''+(today.getMonth()+1);
+  if (mm.length ==1)  mm=""+'0'+mm;
+
+  var dd = ''+today.getDate();
+  if (dd.length ==1)  dd=""+'0'+dd;
+
+  var todayAsString = ""+today.getFullYear()+'-'+mm+"-"+dd;
+  return todayAsString;
+}
+
 // when user clicks link on the goals page,
 // this function gets called, it prepares the form and display a dialog to user 
 function startNewGoalDialog(){ 
+  
+
   // if no start_date field found, then create start_date field
   if ($('#start_date').length ==0){    
     $("#newGoalDiv").append("<label title='Starting Date for the goal'>Start Date(yyyy-mm-dd):</label>"+
-        "<input id='start_date' type='text' maxlength='50' name='start_date' > <br>");
+        "<input id='start_date' type='text' maxlength='50' name='start_date' value='"+getTodayAsString()+"'> <br>");
   } else {
     $('#start_date').val('');
   }

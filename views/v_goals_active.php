@@ -50,8 +50,13 @@
     if (count($activeGoal)==0) { 
         echo 'You cannot log your progress, because you do not have an active goal!'.
         '<br> You can create one <a href="/goals"> here </a>';}
-    else {        
-        echo 'To record your progress, click <a href="javascript:startNewProgressDialog();">here</a>'; 
+    else { 
+        echo '<br>';
+        if ($maxProgressDayEntered >=$activeGoal[0]['goal_days']) {
+          echo 'The number of days entered has reached goal limit. No new progress can be made to this goal'; 
+        } else {
+          echo 'To record your progress, click <a href="javascript:startNewProgressDialog();">here</a>'; 
+        }    
     }  
 
   ?>

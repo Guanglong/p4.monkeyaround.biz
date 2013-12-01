@@ -1,3 +1,4 @@
+$('#home_li').css('background','white');  
 
 // prepare the dialog to sign user up
 $("#signInDiv").dialog({

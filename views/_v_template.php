@@ -20,16 +20,16 @@
 
 <body>	
    <header>  Weight and See 
-     <div class="subHeader"> a weight monitor program </div>
+     <div class="subHeader"> a weight monitoring program </div>
    </header> <br>
    
    <div id="navmenu">
     <ul>
-      <li><a href="/">HOME</a></li>
+      <li ><a id='home_li' href="/">HOME</a></li>
       <?php if($user): ?>
-        <li><a href="/goals/">Manage Goals</a></li>
-        <li><a href="/goals/active">Monitor Active Goal</a></li>  
-        <li><a href="/users/logout">EXIT</a></li>
+        <li ><a id='goals_li' href="/goals/">Manage Goals</a></li>
+        <li ><a id='active_li' href="/goals/active">Monitor Active Goal</a></li>  
+        <li ><a href="/users/logout">EXIT</a></li>
       <?php else: ?>
         <li><a href="javascript:signUp();">Sign Up</a></li>
         <li><a href="javascript:signIn();">Sign In </a></li>
