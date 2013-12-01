@@ -117,7 +117,7 @@
                 date_format(goals.start_date,'%m/%d/%Y') as start_date,
                 progress.progress_id,
                 progress.progress_day,
-                date_format(ADDDATE(goals.start_date,INTERVAL progress_day DAY),'%m/%d/%Y') as progress_date,
+                date_format(ADDDATE(goals.start_date,INTERVAL progress_day DAY),'%Y-%m-%d') as progress_date,
                 goals.goal_days ,
                 progress.progress_value                
             FROM progress   

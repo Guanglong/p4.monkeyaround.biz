@@ -1,6 +1,17 @@
-<section>The progress you made for the active goal:</section>
+
+<!-- display the header based on the count of active-goal and progress count -->
+<?php 
+    echo '<section>Monitor Progress for the Active Goal</section><br>';
+    if (count($activeGoal)>=1) { 
+        if (count($progress)==0) { 
+          echo '<section>You have not made any progress yet!</section>';  
+        }   
+        else {
+          echo '<section>The progress you made for the active goal:</section>';
+        }
+    }  
+?>
 <br/>
-<?php if (count($progress)==0) { echo 'You have not made any progress yet!';  }   ?>
 <?php 
   $rowsData=""; // init 
   if (count($activeGoal)>=1) {
@@ -31,7 +42,18 @@
 <?php echo "<input type='hidden' id='rowsData' name='rowsData' value='".rtrim($rowsData,',')."' >"; ?>
 
 <div id="chart_div" ></div>
-<div id='table_div'></div>   
-<br>
-<section>To Record your progress, click <a href="javascript:startNewProgressDialog();">here</a></section>
+<div id="table_div"></div>
+<section>
+
+  <?php 
+
+    if (count($activeGoal)==0) { 
+        echo 'You cannot log your progress, because you do not have an active goal!'.
+        '<br> You can create one <a href="/goals"> here </a>';}
+    else {        
+        echo 'To record your progress, click <a href="javascript:startNewProgressDialog();">here</a>'; 
+    }  
+
+  ?>
+</section>
 <div id="newProgressDiv" title="Record new Progress"> </div>

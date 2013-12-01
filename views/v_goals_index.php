@@ -30,5 +30,5 @@
 
 <?php endforeach; ?>
 <br>
-<section>To set up a new goal, click <a href="javascript:startNewGoalDialog();">here</a>, which makes previously goals inactive</section>
+<section>To set up a new goal, click <a href="javascript:startNewGoalDialog();">here</a>, which will make all previously goals inactive</section>
 <div id="newGoalDiv" title="New Goal Setup"> </div>
