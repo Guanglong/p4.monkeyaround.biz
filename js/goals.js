@@ -52,7 +52,7 @@ function startNewGoalDialog(){
   // if no goal_days found then create goal_days field  
   if ($('#goal_days').length ==0){ 
     $("#newGoalDiv").append("<label title='Number of days plan to reach the goal'>Goal Days(1~120):</label>"+
-        "<input id='goal_days' type='text' maxlength='50' name='goal_days'   > <br>");
+        "<input id='goal_days' type='number' maxlength='50' name='goal_days'   > <br>");
   } else{
     $('#goal_days').val('');
   }
@@ -60,7 +60,7 @@ function startNewGoalDialog(){
   // if no start_value found then create start_value field  
   if ($('#start_value').length ==0){ 
     $("#newGoalDiv").append("<label title='Starting Weight'>Starting Weight (lbs):</label>"+
-        "<input id='start_value' type='text' maxlength='50' name='start_value'   >  <br>");
+        "<input id='start_value' type='number' maxlength='50' name='start_value'   >  <br>");
   } else{
     $('#start_value').val('');
   }
@@ -68,7 +68,7 @@ function startNewGoalDialog(){
     // if no target_value found then create target_value field  
   if ($('#target_value').length ==0){ 
     $("#newGoalDiv").append("<label title='Goal you want to reach'>Target Weight (lbs):</label>"+
-        "<input id='target_value' type='text' maxlength='50' name='target_value'  >  <br>");
+        "<input id='target_value' type='number' maxlength='50' name='target_value'  >  <br>");
   } else{
     $('#target_value').val('');
   }

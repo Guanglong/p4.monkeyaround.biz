@@ -24,6 +24,26 @@ $("#newProgressDiv").dialog({
           duration: 1000
           } 
 });
+
+$('#predictionDiv').dialog({
+    autoOpen: false,
+    modal: true,
+    width:650,
+    buttons:{  
+      'Thank You': function() {
+                  $(this).dialog( "close" );                     
+                  }      
+            },
+    show: {
+          effect: "blind",   
+          duration: 1000
+          },
+    hide: {
+          effect: "explode",
+          duration: 1000
+          } 
+
+});
  
  // triggered by value change from the field progressDay
 function progressDayChanged(){
@@ -115,13 +135,13 @@ function startNewProgressDialog(){
 
     // if no start_value found then create start_value field  
     if ($('#progress_date').length ==0){ 
-        $("#newProgressDiv").append("Progress Date(yyyy-mm-dd):<input id='progress_date' type='text' maxlength='50' name='progress_date' onChange='progressDateChanged();'>  <br>");
+        $("#newProgressDiv").append("Progress Date(yyyy-mm-dd):<input disabled id='progress_date' type='text' maxlength='50' name='progress_date' onChange='progressDateChanged();'>  <br>");
     } else{
         $('#progress_date').val('');
     } 
     // if no start_date field found, then create start_date field
     if ($('#progress_value').length ==0){    
-        $("#newProgressDiv").append("progress value:<input id='progress_value' type='text' maxlength='50' name='progress_value'   > <br>");
+        $("#newProgressDiv").append("progress value:<input id='progress_value' type='number' maxlength='50' name='progress_value'   > <br>");
     } else {
         $('#progress_value').val('');
     }    
@@ -140,8 +160,19 @@ function startNewProgressDialog(){
 // first do javascript validation, and then do ajax signup
 // upon successfully saving of new progress, refresh current page
 function saveNewProgress(){ 
+   // validate the data, if good, then do ajax save
+   if (validateNewProgressBeforeSave()) {    
+        saveNewProgressViaAjax();    
+    }
+}
 
+// validate with javascript before save, 
+// display error message and return false if data does not pass the validation
+// otherwise, return true
+function validateNewProgressBeforeSave(){
+    var valid = false;
     $("#status").html('');  
+
     // javascript validation 
     var progress_value = $('#progress_value').val();
     var progress_day = $('#progress_day').val();   
@@ -149,12 +180,17 @@ function saveNewProgress(){
     // javascript validation
     if ($.trim(progress_value).length ==0) {
         $("#status").html('progress value is empty');  
-    } else if ($.trim(progress_day).length==0) {
-        $("#status").html('progress day/date is empty');  
-    } else {    
-        saveNewProgressViaAjax();    
-    }
+    } else if (isNaN(progress_value) ||Number(progress_value) <=0 ) {
+       $("#status").html('progress value is not a valid number for Weight and See');  
+    }  else if ($.trim(progress_day).length==0) {
+       $("#status").html('progress day/date is empty'); 
+    } else {
+       valid = true; 
+    } 
+
+    return  valid; 
 }
+
 
 // sign user up with email, password, via ajax
 function saveNewProgressViaAjax() {
@@ -196,8 +232,12 @@ function createNewProgressDone(msg){
   
     switch (status) {
       case 'S':
-          $("#status").html("new progress saved succesfully! Please wait for refreshing...");      
-          forwardPageAfterCreateNewProgress(); 
+          var total_goal_days = parseInt($("#goal_days").val());
+          var progress_day_just_entered=parseInt($('#progress_day').val());
+          var how_many_days_away = total_goal_days - progress_day_just_entered;
+
+          $("#status").html("new progress saved succesfully!");      
+          forwardPageAfterCreateNewProgress(how_many_days_away); 
           break;
       case 'E':
       default:        
@@ -206,10 +246,107 @@ function createNewProgressDone(msg){
     } 
 }
 
-function forwardPageAfterCreateNewProgress(){
-    setTimeout("window.location ='/goals/active'",500);
+function forwardPageAfterCreateNewProgress(how_many_days_away){
+    if (how_many_days_away !=0) {
+      $("#status").append('<br> you are '+how_many_days_away+' day(s) away from seeing what you might look like in 5 years');
+      setTimeout("window.location ='/goals/active'",3000);
+    } else {
+      if (confirm('Do you want to see what you might look like in 5 years?')){
+
+      }
+    }    
 } 
 
+
+function displayPredictionDialog(){ 
+    $('#predictionDiv').dialog('open');
+    animatePredictionDiv();
+}
+
+function animatePredictionDiv(){
+    joke1();  
+}
+
+// process step1 message for 4 seconds and then call step2
+function joke1() {
+    var existingStep1 = $('#prediction_step_1').html();
+    if ( existingStep1.length <=1) {
+        $('#prediction_step_1').html('Connecting to Google Map API with user IP Address');
+        $('#prediction_step_2').html('&nbsp;&nbsp;&nbsp;&nbsp;');
+        setTimeout('joke1();',1000);
+    } else {
+        var newStep2 = existingStep2.replace('&nbsp;',' . ');
+        if (newStep2 == existingStep2) {
+            //call step2            
+            joke2();
+        }  else {
+            $('#prediction_step_2').html('Completed');
+            setTimeout('joke1();',1000);    
+        }
+    }    
+}
+
+ 
+// process step1 message for 4 seconds and then call step2
+function joke2() {
+ 
+    var existingStep1 = $('#prediction_step_1').html();
+    if ( existingStep1.length <=1) {
+        $('#prediction_step_1').html('Connecting to Google National Drivers License Database');
+        $('#prediction_step_2').html('&nbsp;&nbsp;&nbsp;&nbsp;');
+        setTimeout('joke2()',1000);
+    } else {
+        var newStep2 = existingStep2.replace('&nbsp;',' . ');
+        if (newStep2 == existingStep2) {
+            //call step2            
+            joke3();
+        }  else {
+            $('#prediction_step_2').html('Completed');
+            setTimeout('joke2()',1000);    
+        }
+    }  
+}
+ 
+
+// process step1 message for 4 seconds and then call step2
+function joke3() {
+    var existingStep1 = $('#prediction_step_1').html();
+    if ( existingStep1.length <=1) {
+        $('#prediction_step_1').html('Predicting Image data based on the driver license picture');
+        $('#prediction_step_2').html('&nbsp;&nbsp;&nbsp;&nbsp;');
+        setTimeout('joke3()',1000);
+    } else {
+        var newStep2 = existingStep2.replace('&nbsp;',' . ');
+        if (newStep2 == existingStep2) {
+            //call step2            
+            joke4();
+        }  else {
+            $('#prediction_step_2').html('Completed');
+            setTimeout('joke3()',1000);    
+        }
+    }
+}
+
+// process step1 message for 4 seconds and then call step2
+function joke4() {
+    var existingStep1 = $('#prediction_step_1').html();
+    if ( existingStep1.length <=1) {
+        $('#prediction_step_1').html('Painting Image data based on the predicted data in 5 years');
+        $('#prediction_step_2').html('&nbsp;&nbsp;&nbsp;&nbsp;');
+        setTimeout('joke4()',1000);
+    } else {
+        var newStep2 = existingStep2.replace('&nbsp;',' . ');
+        if (newStep2 == existingStep2) {
+            //call step2            
+           $('#predictedImageId').attr('src','/images/monkey.jpeg');  
+        }  else {
+            $('#prediction_step_2').html('Completed');
+            setTimeout('joke4()',1000);    
+        }
+    }
+   
+} 
+ 
 // value stored in rowsData is in the format like below:
 //[[10,"12/05/2016",522],[11,"12/06/2016",345],[15,"12/10/2016",344]]
 // here, let us parse the value and return a 2-dimession array

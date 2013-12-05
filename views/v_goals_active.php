@@ -63,3 +63,8 @@
   ?>
 </section>
 <div id="newProgressDiv" title="Record new Progress"> </div>
+<div id="predictionDiv" title="Our Prediction "> 
+    <div id="prediction_step_1"> </div>
+    <div id="prediction_step_2"> </div>
+    <div id="prediction_step_3"><img id="predictedImageId"> </div>
+</div>
