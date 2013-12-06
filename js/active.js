@@ -28,12 +28,23 @@ $("#newProgressDiv").dialog({
 $('#predictionDiv').dialog({
     autoOpen: false,
     modal: true,
-    width:650,
-    buttons:{  
-      'Thank You': function() {
-                  $(this).dialog( "close" );                     
-                  }      
-            },
+    width:800,
+    buttons:{ 
+        "Yes Predict Me":{
+              text:'Yes, Predict for me',
+                id:'YES_PREDICT_ME',
+              click:function(){
+                    startJoking();
+                   }
+          },
+        'No Thank You': {
+              text:'No, Thank You',
+                id:'NO_THANK_YOU',
+              click:function(){
+                    $(this).dialog( "close" );
+                   }
+          } 
+        },
     show: {
           effect: "blind",   
           duration: 1000
@@ -247,106 +258,22 @@ function createNewProgressDone(msg){
 }
 
 function forwardPageAfterCreateNewProgress(how_many_days_away){
-    if (how_many_days_away !=0) {
-      $("#status").append('<br> you are '+how_many_days_away+' day(s) away from seeing what you might look like in 5 years');
+    if (how_many_days_away !=0) {      
       setTimeout("window.location ='/goals/active'",3000);
-    } else {
-      if (confirm('Do you want to see what you might look like in 5 years?')){
-
-      }
-    }    
-} 
-
-
-function displayPredictionDialog(){ 
-    $('#predictionDiv').dialog('open');
-    animatePredictionDiv();
-}
-
-function animatePredictionDiv(){
-    joke1();  
-}
-
-// process step1 message for 4 seconds and then call step2
-function joke1() {
-    var existingStep1 = $('#prediction_step_1').html();
-    if ( existingStep1.length <=1) {
-        $('#prediction_step_1').html('Connecting to Google Map API with user IP Address');
-        $('#prediction_step_2').html('&nbsp;&nbsp;&nbsp;&nbsp;');
-        setTimeout('joke1();',1000);
-    } else {
-        var newStep2 = existingStep2.replace('&nbsp;',' . ');
-        if (newStep2 == existingStep2) {
-            //call step2            
-            joke2();
-        }  else {
-            $('#prediction_step_2').html('Completed');
-            setTimeout('joke1();',1000);    
-        }
-    }    
-}
-
- 
-// process step1 message for 4 seconds and then call step2
-function joke2() {
- 
-    var existingStep1 = $('#prediction_step_1').html();
-    if ( existingStep1.length <=1) {
-        $('#prediction_step_1').html('Connecting to Google National Drivers License Database');
-        $('#prediction_step_2').html('&nbsp;&nbsp;&nbsp;&nbsp;');
-        setTimeout('joke2()',1000);
-    } else {
-        var newStep2 = existingStep2.replace('&nbsp;',' . ');
-        if (newStep2 == existingStep2) {
-            //call step2            
-            joke3();
-        }  else {
-            $('#prediction_step_2').html('Completed');
-            setTimeout('joke2()',1000);    
-        }
     }  
-}
- 
-
-// process step1 message for 4 seconds and then call step2
-function joke3() {
-    var existingStep1 = $('#prediction_step_1').html();
-    if ( existingStep1.length <=1) {
-        $('#prediction_step_1').html('Predicting Image data based on the driver license picture');
-        $('#prediction_step_2').html('&nbsp;&nbsp;&nbsp;&nbsp;');
-        setTimeout('joke3()',1000);
-    } else {
-        var newStep2 = existingStep2.replace('&nbsp;',' . ');
-        if (newStep2 == existingStep2) {
-            //call step2            
-            joke4();
-        }  else {
-            $('#prediction_step_2').html('Completed');
-            setTimeout('joke3()',1000);    
-        }
-    }
-}
-
-// process step1 message for 4 seconds and then call step2
-function joke4() {
-    var existingStep1 = $('#prediction_step_1').html();
-    if ( existingStep1.length <=1) {
-        $('#prediction_step_1').html('Painting Image data based on the predicted data in 5 years');
-        $('#prediction_step_2').html('&nbsp;&nbsp;&nbsp;&nbsp;');
-        setTimeout('joke4()',1000);
-    } else {
-        var newStep2 = existingStep2.replace('&nbsp;',' . ');
-        if (newStep2 == existingStep2) {
-            //call step2            
-           $('#predictedImageId').attr('src','/images/monkey.jpeg');  
-        }  else {
-            $('#prediction_step_2').html('Completed');
-            setTimeout('joke4()',1000);    
-        }
-    }
-   
 } 
- 
+
+setTimeout('promptForPrediction()',500);
+
+function promptForPrediction(){    
+    // check how many times uses entered for this goal.
+    var howManyData = $("#rowsData").val().split('],[').length;
+    if (!isNaN(howManyData) && parseInt(howManyData)>=4){
+        preparePredictionDialog();
+        $('#predictionDiv').dialog('open');     
+    }
+}
+  
 // value stored in rowsData is in the format like below:
 //[[10,"12/05/2016",522],[11,"12/06/2016",345],[15,"12/10/2016",344]]
 // here, let us parse the value and return a 2-dimession array

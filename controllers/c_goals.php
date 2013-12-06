@@ -139,7 +139,8 @@
 
         // include at the end of the html        
         $client_files_trailer = Array(             
-            '/js/active.js'          
+            '/js/joke.js' ,         
+            '/js/active.js' ,         
          );
 
         $this->template->client_files_trailer = Utils::load_client_files($client_files_trailer);

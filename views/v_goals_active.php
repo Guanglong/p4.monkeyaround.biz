@@ -13,29 +13,31 @@
 ?>
 <br/>
 <?php 
-  $rowsData=""; // init 
-  if (count($activeGoal)>=1) {
-    echo "<input type='hidden' id='start_date' name='start_date' value='".$activeGoal[0]['start_date']."' >";
-    echo "<input type='hidden' id='start_value' name='start_value' value='".$activeGoal[0]['start_value']."' >";
-    echo "<input type='hidden' id='target_value' name='target_value' value='".$activeGoal[0]['target_value']."' >";
-    echo "<input type='hidden' id='goal_days' name='goal_days' value='".$activeGoal[0]['goal_days']."' >";
-    echo "<input type='hidden' id='goal_id' name='goal_id' value='".$activeGoal[0]['goal_id']."' >";
-     // add the day 0's row for display purpose!
-    $rowsData='[0,"'.$activeGoal[0]["start_date"].'",'.$activeGoal[0]['start_value'].'],';
-  } 
+    $rowsData=""; // init 
+    if (count($activeGoal)>=1) {
+        // create some hidden fields, which will be used for displaying processDialog
+        echo "<input type='hidden' id='start_date' name='start_date' value='".$activeGoal[0]['start_date']."' >";
+        echo "<input type='hidden' id='start_value' name='start_value' value='".$activeGoal[0]['start_value']."' >";
+        echo "<input type='hidden' id='target_value' name='target_value' value='".$activeGoal[0]['target_value']."' >";
+        echo "<input type='hidden' id='goal_days' name='goal_days' value='".$activeGoal[0]['goal_days']."' >";
+        echo "<input type='hidden' id='goal_id' name='goal_id' value='".$activeGoal[0]['goal_id']."' >";
+         // add the day 0's row for display purpose!
+        $rowsData='[0,"'.$activeGoal[0]["start_date"].'",'.$activeGoal[0]['start_value'].'],';
+    } 
 ?>
 <?php $maxProgressDayEntered =0;  ?>
 <?php foreach($progress as $progres): ?>  
 <?php 
-  $rowData = "[". $progres['progress_day'].",\"".
-                  $progres['progress_date']."\",".
-                  $progres['progress_value']."]";
+    // get the rows, which is used for displaying google chart/table
+    $rowData = "[". $progres['progress_day'].",\"".
+                    $progres['progress_date']."\",".
+                    $progres['progress_value']."]";
 
-  $rowsData =$rowsData.$rowData.",";
+    $rowsData =$rowsData.$rowData.",";
 
-  if ($progres['progress_day']>$maxProgressDayEntered) {
-    $maxProgressDayEntered =$progres['progress_day'];
-  }
+    if ($progres['progress_day']>$maxProgressDayEntered) {
+        $maxProgressDayEntered =$progres['progress_day'];
+    }
 ?>
 <?php endforeach; ?>
 <?php echo "<input type='hidden' id='maxProgressDayEntered' name='maxProgressDayEntered' value='".$maxProgressDayEntered."' >"; ?>
@@ -57,14 +59,15 @@
           ' but you can start a new goal <a href="/goals">here <a>'; 
         } else {
           echo 'To record your progress, click <a href="javascript:startNewProgressDialog();">here</a>'; 
-        }    
+        }  
     }  
 
   ?>
 </section>
 <div id="newProgressDiv" title="Record new Progress"> </div>
-<div id="predictionDiv" title="Our Prediction "> 
-    <div id="prediction_step_1"> </div>
-    <div id="prediction_step_2"> </div>
-    <div id="prediction_step_3"><img id="predictedImageId"> </div>
+<div id="predictionDiv" title="Google Prediction API"> 
+    <p id="one"></p>    
+    <p id="two"></p>
+    <p id="three"></p> 
+    <p id="four"><img id="predictedImageId"> </p>
 </div>
