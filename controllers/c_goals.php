@@ -131,11 +131,19 @@
                AND users.user_id = ".$this->user->user_id.
             " ORDER BY progress.progress_day asc ";
 
-        # Run the query, store the results in the variable $posts
+        # Run the query, store the results in the variable $progress
         $progress = DB::instance(DB_NAME)->select_rows($progressQuery);
 
         # Pass data to the View
         $this->template->content->progress = $progress;
+
+        $userQuery = "select * from users where user_id = ".$this->user->user_id;
+        
+        # Run the query, store the results in the variable $UserData
+        $UserData = DB::instance(DB_NAME)->select_rows($userQuery);
+        
+        # Pass data to the View
+        $this->template->content->userData = $UserData;
 
         // include at the end of the html        
         $client_files_trailer = Array(             
