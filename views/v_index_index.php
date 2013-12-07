@@ -2,11 +2,16 @@
 <div id="signUpDiv" title="Sign Up"></div>
 <div id="signInDiv" title="Sign In"></div>
 <div id="mainContent"> </div>
-<div>
-	We all know that healthy eating and exercises are important to keep weight under controll.
+<section>
+	We all know that healthy eating and exercises are important to keep weight under control.
 	But people often do not realize that a tool to monitor the progress is vital as well.
-	"monkeyaround.biz" now provides a platform for people to monitor weight progress.
-	You set a goal, and log your progress, 'Weight and See' will be here to keep you accompanied
-	<?php if(!$user) echo "<br>To Start, you will need an email address to <a href='javascript:signUp();'>Sign Up</a>"; ?>
-	<?php if(!$user) echo "<br> If You have signed up, you can  <a href='javascript:signIn();'>Sign In</a> here"; ?>
-</div>
+	"Weight and See" &reg; now provides a platform for people to monitor weight progress.
+	<br>To use 'Weight and See' is as easy as 1-2-3:
+	<ol>
+		<li> Sign Up / Sign In Using Email</li>
+		<li> Set a Goal </li>
+		<li> Record Your Weight and See Your Progress </li>
+    </ol>		
+	<?php if(!$user) echo "To start, you will need an email address to <a href='javascript:signUp();'>sign up</a>.<br>"; ?>
+	<?php if(!$user) echo "If you have signed up, you can <a href='javascript:signIn();'>sign in</a> here"; ?>
+</section>

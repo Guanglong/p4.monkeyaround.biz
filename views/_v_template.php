@@ -43,7 +43,7 @@
      <hr/>
  
      <footer   id="disclosure"> 
-     'Weight and See' is brought to you by: Guang Long (Harvard DWA15-p4)<br/>    
+     'Weight and See'&reg; is brought to you by: Guang Long (Harvard DWA15-p4)<br/>    
       made possible by the instructor Susan Buck and <span id='tfs'>the TFs</span>. --Thanks!  <br><br>
       This site uses <a href="http://asmallorange.com/">A Small Orange </a> to send emails.
       If you think you should get, but not getting emails from monkeyaround.biz, please check your spam filter.

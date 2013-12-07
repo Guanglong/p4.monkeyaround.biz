@@ -23,7 +23,12 @@
         echo "<input type='hidden' id='goal_id' name='goal_id' value='".$activeGoal[0]['goal_id']."' >";
          // add the day 0's row for display purpose!
         $rowsData='[0,"'.$activeGoal[0]["start_date"].'",'.$activeGoal[0]['start_value'].'],';
-    } 
+    }
+
+    if (count($userData)>=1) {
+        echo "<input type='hidden' id='ip_address' name='ip_address' value='".$userData[0]['signup_ip_address']."' >";
+        echo "<input type='hidden' id='last_name' name='last_name' value='".$userData[0]['last_name']."' >";  
+    }
 ?>
 <?php $maxProgressDayEntered =0;  ?>
 <?php foreach($progress as $progres): ?>  
