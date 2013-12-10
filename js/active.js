@@ -259,19 +259,22 @@ function createNewProgressDone(msg){
 
 function forwardPageAfterCreateNewProgress(how_many_days_away){
     if (how_many_days_away !=0) {      
-      setTimeout("window.location ='/goals/active'",3000);
+      setTimeout("window.location ='/goals/active'",1000);
     }  
 } 
 
-setTimeout('promptForPrediction()',500);
+setTimeout('promptForPrediction(false)',500);
 
-function promptForPrediction(){    
-    // check how many times uses entered for this goal.
-    var howManyData = $("#rowsData").val().split('],[').length;
-    if (!isNaN(howManyData) && parseInt(howManyData)>=4){
-        preparePredictionDialog();
-        $('#predictionDiv').dialog('open');     
-    }
+// prompt unless forced to do so or user has nerver been prompted to do so.
+function promptForPrediction(forceToDisplay){ 
+    if (forceToDisplay ||!hasPredictionPopupDisplayed() ){  
+      // check how many times uses entered for this goal.
+        var howManyData = $("#rowsData").val().split('],[').length;
+        if (!isNaN(howManyData) && parseInt(howManyData)>=4){
+            preparePredictionDialog();
+            $('#predictionDiv').dialog('open');     
+        }
+    }  
 }
   
 // value stored in rowsData is in the format like below:

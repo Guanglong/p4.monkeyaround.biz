@@ -109,7 +109,9 @@ function joke4() {
             $('#two').html(''); 
 
             displayMonkeyImage();  
-
+            // set the display indicator, so we donot annoy the user with popups
+            predictionPopupDisplayed();
+            // change the label for the button
             $('#NO_THANK_YOU').text('Thank You');
         }  else {
             $('#two').html(modifiedTextForTwo);            
@@ -132,4 +134,20 @@ function displayMonkeyImage(){
    }
    var imageFileName = "joke"+sequenceForImage%2+".jpeg";
    $('#predictedImageId').attr('src','/images/'+imageFileName);
+}
+
+// set the  displayed indicator, so the popup does not keep showing to user
+function predictionPopupDisplayed() {
+    if (window.localStorage) {
+        window.localStorage['PREDICTION_POPUP_DISPLAYED'] = 'Y';
+    } 
+}
+
+// has prediction popup displayed to user yet?
+function hasPredictionPopupDisplayed(){
+    var displayed = false;
+    if (window.localStorage) {
+        displayed = window.localStorage['PREDICTION_POPUP_DISPLAYED']=='Y';
+    }
+    return displayed;
 }
