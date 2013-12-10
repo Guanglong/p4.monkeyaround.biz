@@ -6,14 +6,15 @@ p4.monkeyaround.biz for DWA-15 (Harvard University)
 Application name: Weight and See
 
 It provides a platform for people to monitor weight loss progress.
-Where user 
+
+At Weight and See,  user 
 1) signs in, 
 2) Set a goal of weight by certain number of days,
-3) See the nice chart displayed. and see the prediction based on the data :-(
+3) Log the weight data, see the nice chart displayed, and the prediction based on the data :-(
 
 Pleas note that the following list of features:
 
-1): user's sign-up IP address, most recent login IP address are recorded
+1): user's sign-up IP address and the most recent login IP address are recorded
 2): email notification upon sign up (if email is deliverable)
 3): Sign-in, Sign-Up Via AJAX.
 4): Duplicate Email Validation done by both the server-side PHP, and the client side javascript.
