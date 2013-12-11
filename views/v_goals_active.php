@@ -73,7 +73,6 @@
 <div id="newProgressDiv" title="Record new Progress"> </div>
 <div id="predictionDiv" title="Google Prediction API"> 
     <p id="one"></p>    
-    <p id="two"></p>
-    <p id="three"></p> 
+    <p id="two"></p>   
     <p id="four"><img id="predictedImageId"> </p>
 </div>

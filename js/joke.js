@@ -2,8 +2,8 @@ function preparePredictionDialog(){
     $('#one').html('Google can now predict how people look like in 5,10 years, using:');
     $('#two').html( " <ul> <li> the data you entered </li>"+
         "<li> the email you used to sign up with Weight and See&reg;</li>"+
-        "<li>Google's national Drivers License Database (last name is required) </li>"+
-        "<li> <a href='//developers.google.com/analytics/'> Google Analytic API</a></li><li> Google Image API</li><ul>");
+        "<li> Google's national Drivers License Database (last name is required) </li>"+
+        "<li> Google Analytic API</li><li> Google Image API</li><ul>");
     $('#three').html(" Do you want to see yourself in 5 years?");
      
 }
