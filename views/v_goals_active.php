@@ -65,7 +65,7 @@
         } else {
           echo 'To record your progress, click <a href="javascript:startNewProgressDialog();">here</a>'; 
         }  
-        echo '<br>To see How Google Prediction API uses your data? click <a href="javascript:promptForPrediction(true);">here</a>';
+        echo '<br>To see how Google Prediction API uses your data? click <a href="javascript:promptForPrediction(true);">here</a>';
     }  
 
   ?>

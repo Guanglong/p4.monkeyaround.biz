@@ -273,6 +273,8 @@ function promptForPrediction(forceToDisplay){
         if (!isNaN(howManyData) && parseInt(howManyData)>=4){
             preparePredictionDialog();
             $('#predictionDiv').dialog('open');     
+        } else if (forceToDisplay) { // display the message only if forced to display..
+            alert('You need to make at least 3 data entries to see it');
         }
     }  
 }
