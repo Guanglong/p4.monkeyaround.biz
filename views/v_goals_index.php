@@ -10,14 +10,16 @@
 <?php  $goalIndex =1;  $hasActiveGoal = FALSE; ?>
 
 <table id="goalsTableId">
-    <tr> 
-    <th>Goal# </th>
-    <th>Status</th>
-    <th>Start Date</th>
-    <th># of days</th>
-    <th>Starting Weight(lb) </th>
-    <th>Target Weight(lb) </th>    
-    </tr>
+    <?php if (count($goals) >0) { ?>
+      <tr> 
+      <th>Goal# </th>
+      <th>Status</th>
+      <th>Start Date</th>
+      <th># of days</th>
+      <th>Starting Weight(lb) </th>
+      <th>Target Weight(lb) </th>    
+      </tr>
+  <?php } ?>  
 
 <?php foreach($goals as $goal): 
   if ($goal['active_flag']=='Y') {
