@@ -104,3 +104,8 @@ table {
   color: purple;
   background: white; 
 }
+
+#goalsTableId{
+  color:white;
+  text-align: center;
+}

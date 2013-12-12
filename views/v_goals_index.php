@@ -12,13 +12,16 @@
 <table id="goalsTableId">
     <?php if (count($goals) >0) { ?>
       <tr> 
-      <th>Goal# </th>
+      <th>Goal: </th>
       <th>Status</th>
-      <th>Start Date</th>
-      <th># of days</th>
-      <th>Starting Weight(lb) </th>
-      <th>Target Weight(lb) </th>    
+      <th>Start On:</th>
+      <th>Days:</th>
+      <th>Starting Weight: </th>
+      <th>Target Weight: </th>    
       </tr>
+      <?='<tr></tr>' ?> 
+
+      <?='<tr></tr>' ?>        
   <?php } ?>  
 
 <?php foreach($goals as $goal): 
@@ -29,13 +32,13 @@
     $goal_status='Inactive';
   }
 ?>
-      <?='<tr title="goal created on '.Time::display($goal['created'],"Y/m/d :ia").'">' ?> 
+      <?='<tr title="goal created on '.Time::display($goal['created'],"m/d/Y h:ia").'">' ?> 
       <?='<td>'.$goalIndex.'</td>' ?>
       <?='<td>'.$goal_status.'</td>' ?>      
       <?='<td>'.$goal['start_date'].'</td>' ?>
-      <?='<td>'.$goal['goal_days'].'</td>' ?> 
-      <?='<td>'.$goal['start_value'].'</td>' ?>
-      <?='<td>'.$goal['target_value'].'</td>' ?>             
+      <?='<td>'.$goal['goal_days'].' days</td>' ?> 
+      <?='<td>'.$goal['start_value'].' lbs</td>' ?>
+      <?='<td>'.$goal['target_value'].' lbs</td>' ?>             
    <?='</tr>' ?>  
   
   <?php $goalIndex +=1;?>
