@@ -6,7 +6,18 @@
 ?>
 
 <br/>
+
 <?php  $goalIndex =1;  $hasActiveGoal = FALSE; ?>
+
+<table id="goalsTableId">
+    <tr> 
+    <th>Goal# </th>
+    <th>Status</th>
+    <th>Start Date</th>
+    <th># of days</th>
+    <th>Starting Weight(lb) </th>
+    <th>Target Weight(lb) </th>    
+    </tr>
 
 <?php foreach($goals as $goal): 
   if ($goal['active_flag']=='Y') {
@@ -16,21 +27,21 @@
     $goal_status='Inactive';
   }
 ?>
- <fieldset title="<?php echo $goal_status ?> Goal">
-
-    Goal <?= $goalIndex ?> -- <?php echo $goal_status ?> :  
-    Created on
-         <time datetime="<?=Time::display($goal['created'],'Y-m-d G:i')?>">
-          <?=Time::display($goal['created'])?>
-        </time> <br>        
-    Details: You plan to start your goal on <?=$goal['start_date'] ?> from <?=$goal['start_value'] ?> lbs. to  
-    <?=$goal['target_value'] ?> lbs.
-   <br>
-  </fieldset>
+      <?='<tr title="goal created on '.Time::display($goal['created'],"Y/m/d :ia").'">' ?> 
+      <?='<td>'.$goalIndex.'</td>' ?>
+      <?='<td>'.$goal_status.'</td>' ?>      
+      <?='<td>'.$goal['start_date'].'</td>' ?>
+      <?='<td>'.$goal['goal_days'].'</td>' ?> 
+      <?='<td>'.$goal['start_value'].'</td>' ?>
+      <?='<td>'.$goal['target_value'].'</td>' ?>             
+   <?='</tr>' ?>  
   
   <?php $goalIndex +=1;?>
 
 <?php endforeach; ?>
+
+</table >
+
 <br>
 <section>To set up a new goal, click <a href="javascript:startNewGoalDialog();">here</a>, 
   which will make all previously goals inactive.  
