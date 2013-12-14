@@ -195,8 +195,8 @@ function validateNewProgressBeforeSave(){
        $("#status").html('weight value is empty');  
     } else if (isNaN(progress_value) ||Number(progress_value) <=0 ) {
        $("#status").html('weight value is not a valid number for Weight and See');  
-    }  else if ($.trim(progress_day).length==0) {
-       $("#status").html('progress day/date is empty'); 
+    }  else if (progress_day.length==0 || progress_day ==0 ) {
+       $("#status").html('progress Day/Date is empty'); 
     } else {
        valid = true; 
     } 
