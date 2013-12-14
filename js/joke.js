@@ -2,7 +2,7 @@ function preparePredictionDialog(){
     $('#one').html('Google can now predict how people look like in 5,10 years, using:');
     $('#two').html( " <ul> <li> the data you entered </li>"+
         "<li> the email you used to sign up with Weight and See&reg;</li>"+
-        "<li> Google's national Drivers License Database (last name is required) </li>"+
+        "<li> Google's national Driver's License Database (last name is required) </li>"+
         "<li> Google Analytic API</li><li> Google Image API</li><ul>");
     $('#three').html(" Do you want to see yourself in 5 years?");
      
@@ -51,7 +51,7 @@ function joke2() {
     var originalTextForTwo = $("#two").html();    
     var last_name =$('#last_name').val();
     if ( originalTextForOne.length <=1) {
-        $('#one').html('Searching Google National Drivers License Database with Last Name:'+last_name+' <img src="/images/in-progress.gif">');
+        $('#one').html("Searching Google National Driver's License Database with Last Name: "+last_name+' <img src="/images/in-progress.gif">');
         $('#two').html('.&nbsp;&nbsp;&nbsp;');
         setTimeout('joke2()',1000);
     } else {
@@ -75,7 +75,7 @@ function joke3() {
     var originalTextForTwo = $("#two").html();    
 
     if ( originalTextForOne.length <=1) {
-        $('#one').html('Creating prediction data based on the driver license picture <img src="/images/in-progress.gif">');
+        $('#one').html("Creating prediction data based on the driver's license picture <img src='/images/in-progress.gif'>");
         $('#two').html('.&nbsp;&nbsp;&nbsp;');
         setTimeout('joke3()',1000);
     } else {

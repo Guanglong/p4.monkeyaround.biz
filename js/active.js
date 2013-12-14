@@ -42,6 +42,8 @@ $('#predictionDiv').dialog({
                 id:'NO_THANK_YOU',
               click:function(){
                     $(this).dialog( "close" );
+                    $('#YES_PREDICT_ME').show();                    
+                    $('#NO_THANK_YOU').text('No, Thank You');
                    }
           } 
         },
@@ -146,13 +148,13 @@ function startNewProgressDialog(){
 
     // if no start_value found then create start_value field  
     if ($('#progress_date').length ==0){ 
-        $("#newProgressDiv").append("Progress Date(yyyy-mm-dd):<input disabled id='progress_date' type='text' maxlength='50' name='progress_date' onChange='progressDateChanged();'>  <br>");
+        $("#newProgressDiv").append("Date(yyyy-mm-dd):<input disabled id='progress_date' type='text' maxlength='50' name='progress_date' onChange='progressDateChanged();'>  <br>");
     } else{
         $('#progress_date').val('');
     } 
     // if no start_date field found, then create start_date field
     if ($('#progress_value').length ==0){    
-        $("#newProgressDiv").append("progress value:<input id='progress_value' type='number' maxlength='50' name='progress_value'   > <br>");
+        $("#newProgressDiv").append("Weight (lbs):<input id='progress_value' type='number' maxlength='50' name='progress_value'   > <br>");
     } else {
         $('#progress_value').val('');
     }    
@@ -190,9 +192,9 @@ function validateNewProgressBeforeSave(){
    
     // javascript validation
     if ($.trim(progress_value).length ==0) {
-        $("#status").html('progress value is empty');  
+       $("#status").html('weight value is empty');  
     } else if (isNaN(progress_value) ||Number(progress_value) <=0 ) {
-       $("#status").html('progress value is not a valid number for Weight and See');  
+       $("#status").html('weight value is not a valid number for Weight and See');  
     }  else if ($.trim(progress_day).length==0) {
        $("#status").html('progress day/date is empty'); 
     } else {
@@ -259,7 +261,7 @@ function createNewProgressDone(msg){
 
 function forwardPageAfterCreateNewProgress(how_many_days_away){
     if (how_many_days_away !=0) {      
-      setTimeout("window.location ='/goals/active'",1000);
+      setTimeout("window.location ='/goals/active'",500);
     }  
 } 
 
@@ -270,11 +272,11 @@ function promptForPrediction(forceToDisplay){
     if (forceToDisplay ||!hasPredictionPopupDisplayed() ){  
       // check how many times uses entered for this goal.
         var howManyData = $("#rowsData").val().split('],[').length;
-        if (!isNaN(howManyData) && parseInt(howManyData)>=4){
+        if (!isNaN(howManyData) && parseInt(howManyData)>=3){
             preparePredictionDialog();
             $('#predictionDiv').dialog('open');     
         } else if (forceToDisplay) { // display the message only if forced to displ
-            alert('You need to make at least 3 data entries to see it');
+            alert('You need to make at least 2 data entries to see it');
         }
     }  
 }
