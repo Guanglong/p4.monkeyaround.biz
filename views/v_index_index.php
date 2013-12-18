@@ -1,4 +1,4 @@
-<section>Welcome to <?=APP_NAME?><?php if($user) echo $user->first_name."!"; ?></section>
+<section>Welcome to <?=APP_NAME?>&reg;<?php if($user) echo $user->first_name."!"; ?></section>
 <div id="signUpDiv" title="Sign Up"></div>
 <div id="signInDiv" title="Sign In"></div>
 <div id="mainContent"> </div>
