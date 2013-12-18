@@ -49,7 +49,7 @@
 
 <br>
 <section>To set up a new goal, click <a href="javascript:startNewGoalDialog();">here</a>, 
-  which will make all previously goals inactive.  
-  <?php if ($hasActiveGoal ) { echo "<br>To monitor your current active goal, click <a href='/goals/active'>here</a>";} ?>
+  which will make all previous goals inactive.  
+  <?php if ($hasActiveGoal ) { echo "<br>To monitor your current active goal, click <a href='/goals/active'>here</a>.";} ?>
 </section>
 <div id="newGoalDiv" title="New Goal Setup"> </div>

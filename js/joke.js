@@ -1,5 +1,5 @@
 function preparePredictionDialog(){
-    $('#one').html('Google can now predict how people look like in 5,10 years, using:');
+    $('#one').html('Google can now predict what people look like in 5-10 years, using:');
     $('#two').html( " <ul> <li> the data you entered </li>"+
         "<li> the email you used to sign up with Weight and See&reg;</li>"+
         "<li> Google's national Driver's License Database (last name is required) </li>"+
