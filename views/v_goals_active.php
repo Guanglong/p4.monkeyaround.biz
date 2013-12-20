@@ -15,12 +15,15 @@
 <?php 
     $rowsData=""; // init 
     if (count($activeGoal)>=1) {
+        // the goal average = (startWeight- targetWeight)/days
+        $goalAverage = round(($activeGoal[0]['start_value']-$activeGoal[0]['target_value'])/$activeGoal[0]['goal_days'],1);
         // create some hidden fields, which will be used for displaying processDialog
         echo "<input type='hidden' id='start_date' name='start_date' value='".$activeGoal[0]['start_date']."' >";
         echo "<input type='hidden' id='start_value' name='start_value' value='".$activeGoal[0]['start_value']."' >";
         echo "<input type='hidden' id='target_value' name='target_value' value='".$activeGoal[0]['target_value']."' >";
         echo "<input type='hidden' id='goal_days' name='goal_days' value='".$activeGoal[0]['goal_days']."' >";
         echo "<input type='hidden' id='goal_id' name='goal_id' value='".$activeGoal[0]['goal_id']."' >";
+        echo "<input type='hidden' id='goal_avg' name='goal_avg' value='".$goalAverage."' >";
          // add the day 0's row for display purpose!
         $rowsData='[0,"'.$activeGoal[0]["start_date"].'",'.$activeGoal[0]['start_value'].'],';
     }

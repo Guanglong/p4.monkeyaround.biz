@@ -38,29 +38,28 @@ function getTodayAsString(){
 
 // when user clicks link on the goals page,
 // this function gets called, it prepares the form and display a dialog to user 
-function startNewGoalDialog(){ 
-  
+function startNewGoalDialog(){   
 
   // if no start_date field found, then create start_date field
   if ($('#start_date').length ==0){    
     $("#newGoalDiv").append("<label title='Starting Date for the goal'>Start Date(yyyy-mm-dd):</label>"+
         "<input id='start_date' type='text' maxlength='50' name='start_date' value='"+getTodayAsString()+"'> <br>");
   } else {
-    $('#start_date').val('');
+    $('#start_date').val(getTodayAsString());
   }
   
   // if no goal_days found then create goal_days field  
   if ($('#goal_days').length ==0){ 
     $("#newGoalDiv").append("<label title='Number of days plan to reach the goal'>Goal Days(1~120):</label>"+
-        "<input id='goal_days' type='number' maxlength='50' name='goal_days'   > <br>");
+        "<input id='goal_days' type='number' maxlength='50' name='goal_days' value='30' > <br>");
   } else{
-    $('#goal_days').val('');
+    $('#goal_days').val('30');
   }
 
   // if no start_value found then create start_value field  
   if ($('#start_value').length ==0){ 
     $("#newGoalDiv").append("<label title='Starting Weight'>Starting Weight (lbs):</label>"+
-        "<input id='start_value' type='number' maxlength='50' name='start_value'   >  <br>");
+        "<input id='start_value' type='number' maxlength='50' name='start_value'  >  <br>");
   } else{
     $('#start_value').val('');
   }

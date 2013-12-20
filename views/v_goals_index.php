@@ -12,13 +12,13 @@
 <table id="goalsTableId">
     <?php if (count($goals) >0) { ?>
       <tr> 
-      <th>Goal: </th>
+      <th>Goal </th>
       <th>Status</th>
-      <th>Start On:</th>
-      <th>Duration:</th>
-      <th>Starting Weight: </th>
-      <th>Target Weight: </th>    
-      <th>Goal Avg: </th> 
+      <th>Start On</th>
+      <th>Duration</th>
+      <th>Starting Weight </th>
+      <th>Target Weight </th>    
+      <th>Goal Avg </th> 
       </tr>
       <?='<tr></tr>' ?> 
 

@@ -12,6 +12,11 @@
 		<li> Set a Goal </li>
 		<li> Record Your Weight and See Your Progress </li>
     </ol>		
-	<?php if(!$user) echo "To start, you will need an email address to <a href='javascript:signUp();'>sign up</a>.<br>"; ?>
-	<?php if(!$user) echo "If you have signed up, you can <a href='javascript:signIn();'>sign in</a> here."; ?>
+	<?php if(!$user) {
+			echo '<button id="signUp" type="button" >Sign Up </button>';
+			echo '&nbsp;';
+			echo '<button id="signIn" type="button">Sign In</button>';
+		}	
+	?>
+	
 </section>

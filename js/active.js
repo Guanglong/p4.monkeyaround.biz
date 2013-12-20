@@ -126,8 +126,14 @@ function startNewProgressDialog(){
     } else{
         $('#goal_start_date').html(goal_start_date);
     }
+
+    if($('#goal_average').length==0){
+        $("#newProgressDiv").append("<div id='goal_average'>Your goal average:"+$('#goal_avg').val()+" lbs/day</div>");      
+    }
+
      // display last progress day entered
     var maxProgressDayEntered = parseInt($.trim($("#maxProgressDayEntered").val()));
+
 
     var last_known_progress_date = daysLaterInString(goal_start_date,maxProgressDayEntered);
       

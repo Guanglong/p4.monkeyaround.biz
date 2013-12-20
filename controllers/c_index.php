@@ -23,8 +23,7 @@ class index_controller extends base_controller {
 	
 		# CSS/JS includes
         	 
-	    $client_files_head = Array(
-	    	'/js/index.js', 
+	    $client_files_head = Array(	    	
 			'/css/index.css'
         );
 
@@ -33,7 +32,8 @@ class index_controller extends base_controller {
         // include at the end of the html        
 	    $client_files_trailer = Array(                
         	'/js/signUp.js', 
-        	'/js/signIn.js'          
+        	'/js/signIn.js' ,
+        	'/js/index.js'         
          );
 	    $this->template->client_files_trailer = Utils::load_client_files($client_files_trailer);	    
 	     				     		

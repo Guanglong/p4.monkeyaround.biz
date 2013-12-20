@@ -27,12 +27,9 @@
     <ul>
       <li ><a id='home_li' href="/">HOME</a></li>
       <?php if($user): ?>
-        <li ><a id='goals_li' href="/goals/">Manage Goals</a></li>
-        <li ><a id='active_li' href="/goals/active">Monitor Active Goal</a></li>  
-        <li ><a href="/users/logout">EXIT</a></li>
-      <?php else: ?>
-        <li><a href="javascript:signUp();">Sign Up</a></li>
-        <li><a href="javascript:signIn();">Sign In </a></li>
+        <li ><a id='goals_li' href="/goals/">All Goals</a></li>
+        <li ><a id='active_li' href="/goals/active">Active Goal</a></li>  
+        <li ><a href="/users/logout">EXIT</a></li> 
       <?php endif; ?>
     </ul>
   </div> 

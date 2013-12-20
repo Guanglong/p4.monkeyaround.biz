@@ -92,8 +92,7 @@
         $this->template->title   = "Active Goal";
 
         $client_files_head = Array( 
-             "https://www.google.com/jsapi",
-             "/css/active.js"
+             "https://www.google.com/jsapi"             
         );
 
         $this->template->client_files_head = Utils::load_client_files($client_files_head);
@@ -148,7 +147,8 @@
         // include at the end of the html        
         $client_files_trailer = Array(             
             '/js/joke.js' ,         
-            '/js/active.js' ,         
+            '/js/active.js',
+            "/css/active.js"         
          );
 
         $this->template->client_files_trailer = Utils::load_client_files($client_files_trailer);
