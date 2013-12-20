@@ -204,5 +204,15 @@ function createNewGoalDone(msg){
 
 // give user a bittle time delay, and then forward to active goal page
 function forwardPageAfterCreateNewGoal(){
-  setTimeout("window.location ='/goals/active'",500);
+    setTimeout("window.location ='/goals/active'",500);
 }
+
+// when clicking new goal button
+$('#createNewGoal').click(function(){
+    startNewGoalDialog();
+});
+
+// when clicking monitor active goal button
+$('#monitorActiveGoal').click(function(){
+    window.location ='/goals/active';
+});

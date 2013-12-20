@@ -1,4 +1,6 @@
-setInterval('rotateBackgroundImage()',2000);
+// the background image is not removed 
+//based on the review from the class demo
+//setInterval('rotateBackgroundImage()',2000);
 
 // change the background image sequentially 
 // for example: 

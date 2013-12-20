@@ -62,7 +62,7 @@ $('#predictionDiv').dialog({
 function progressDayChanged(){
     $("#status").html('')  ;
     if (validateProgressDay()) { // if valid, continue...
-      setProgressDate();
+        setProgressDate();
     }
 }
 
@@ -379,3 +379,11 @@ function drawChart() {
 
 google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart);
+
+$('#recordNewProgress').click(function() {
+    startNewProgressDialog();
+});
+
+$('#predictMe').click(function(){
+    promptForPrediction(true);  // force to predict, otherwise, it will not display if it has been shown already!
+});

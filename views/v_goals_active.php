@@ -60,17 +60,19 @@
     else { 
         echo '<br>';
         if ($maxProgressDayEntered >=$activeGoal[0]['goal_days']) {
-          echo 'The number of days entered has reached goal limit. No new progress can be made to this goal,'.
-          ' but you can start a new goal <a href="/goals">here <a>'; 
-        } else {
-          echo 'To record your progress, click <a href="javascript:startNewProgressDialog();">here</a>'; 
+
+            echo 'The number of days entered has reached goal limit. No new progress can be made to this goal,'.
+            ' but you can start a new goal <a href="/goals">here <a>'; 
+        } else {          
+            echo '<button id="recordNewProgress" type="button">Record New Progress</button>';
         }  
-        echo '<br>To see how Google Prediction API uses your data? click <a href="javascript:promptForPrediction(true);">here</a>';
+
+        echo '&nbsp;<button id="predictMe" type="button" title="using Google Prediction API">Predict Me in the Future</button>';        
     }  
 
   ?>
 </section>
-<div id="newProgressDiv" title="Record new Progress"> </div>
+<div id="newProgressDiv" title="Record New Progress"> </div>
 <div id="predictionDiv" title="Google Prediction API"> 
     <p id="one"></p>    
     <p id="two"></p>   
